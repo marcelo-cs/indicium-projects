@@ -1,0 +1,32 @@
+version: 2
+
+models:
+    - name: dim_customer
+      description: Current customer information.
+      columns:
+        - name: customer_sk
+          description: Surrogate key for Customer records.
+          tests:
+            - not_null
+
+        - name: customerid
+          description: Primary key for Customer records.
+
+        - name: personid
+          description: Foreign key to Person.BusinessEntityID
+
+        - name: storeid
+          description: Foreign key to Store.BusinessEntityID
+
+        - name: territoryid
+          description: ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID
+
+        - name: persontype
+          description: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact
+
+        - name: title
+          description: A courtesy title. For example, Mr. or Ms.
+
+        - name: fullname
+          description: Full name of the person.
+          

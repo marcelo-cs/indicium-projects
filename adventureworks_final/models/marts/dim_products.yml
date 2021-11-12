@@ -1,0 +1,40 @@
+version: 2
+
+models:
+    - name: dim_products
+      description: Products sold or used in the manufacturing of sold products.
+      columns:
+        - name: product_sk
+          description: Surrogate key for Product records.
+          tests:
+            - not_null
+        
+        - name: productid
+          description: Primary key for Product records.
+
+        - name: productsubcategoryid
+          description: Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID.
+
+        - name: productmodelid
+          description: Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
+
+        - name: product_name
+          description: Name of the product.
+        
+        - name: product_color
+          description: Product color.
+
+        - name: standardcost
+          description: Standard cost of the product.
+
+        - name: listprice
+          description: Selling price.
+
+        - name: product_size
+          description: Product size.
+
+        - name: product_weight
+          description: Product weight.
+
+        - name: productline
+          description: R = Road, M = Mountain, T = Touring, S = Standard

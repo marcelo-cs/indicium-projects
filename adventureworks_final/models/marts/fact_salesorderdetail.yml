@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: fact_salesorderdetail
+    description: This is the general sales order fact table.
+    columns:
+      - name: salesorderid
+        description: The order natural key.
+        tests:
+         - not_null
+
+      - name: salesorderdetail_fk
+        description: Foreign key. One incremental unique number per product sold.
+
+      - name: creditcard_fk
+        description: Credit card identification number. Foreign key to CreditCard.CreditCardID.
+        tests:
+         - relationships: 
+            to: ref('dim_creditcard')
+            field: creditcard_sk
+
+      - name: customer_fk
+        description: Customer identification number. Foreign key to Customer.BusinessEntityID.
+        tests:
+         - relationships: 
+            to: ref('dim_customer')
+            field: customer_sk
+
+      - name: salesperson_fk
+        description: Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
+        tests:
+         - relationships: 
+            to: ref('dim_employee')
+            field: salesperson_sk
+
+      - name: personaddress_fk
+        description: Customer billing address. Foreign key to Address.AddressID.
+        tests:
+         - relationships: 
+            to: ref('dim_local')
+            field: personaddress_sk
+
+      - name: product_fk
+        description: Product sold to customer. Foreign key to Product.ProductID.
+        tests:
+         - relationships: 
+            to: ref('dim_products')
+            field: product_sk
+
+      - name: salesorder_fk
+        description: Foreign key to SalesReason.SalesReasonID.
+        tests:
+         - relationships: 
+            to: ref('dim_reason')
+            field: salesorder_sk
+
+      - name: orderqty
+        description: Quantity ordered per product.
+
+      - name: unitprice
+        description: Selling price of a single product.
+
+      - name: unitpricediscount
+        description: Discount amount.
+
+      - name: subtotal
+        description: Sales subtotal.
+
+      - name: taxamt
+        description: Tax amount.
+
+      - name: freight
+        description: Shipping cost.
+
+      - name: totaldue
+        description: Total due from customer. Computed as Subtotal + TaxAmt + Freight.
+
+      - name: order_status
+        description: Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
+
+      - name: orderdate
+        description: Dates the sales order was created.
+
+      - name: duedate
+        description: Date the order is due to the customer.
+
+      - name: shipdate
+        description: Date the order was shipped to the customer.

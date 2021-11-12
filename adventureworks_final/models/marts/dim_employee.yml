@@ -1,0 +1,38 @@
+version: 2
+
+models:
+    - name: dim_employee
+      description: Sales representative current information.
+      columns:
+        - name: salesperson_sk
+          description: Surrogate key for SalesPerson records.
+          tests:
+            - not_null
+
+        - name: businessentityid
+          description: Primary key for SalesPerson records. Foreign key to Employee.BusinessEntityID
+
+        - name: territoryid
+          description: Territory currently assigned to. Foreign key to SalesTerritory.SalesTerritoryID.
+
+        - name: salesquota
+          description: Projected yearly sales.
+
+        - name: salesytd
+          description: Sales total year to date.
+
+        - name: jobtitle
+          description: Work title such as Buyer or Sales Representative.
+
+        - name: gender
+          description: M = Male, F = Female
+
+        - name: persontype
+          description: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact
+
+        - name: title
+          description: A courtesy title. For example, Mr. or Ms.
+
+        - name: fullname
+          description: Full name of the person.
+          

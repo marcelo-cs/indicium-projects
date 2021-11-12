@@ -1,0 +1,52 @@
+version: 2
+
+sources:
+  - name: final_dw
+    description: This is a replica of the Postgres database of AdventureWorks.
+    tables:
+      - name: salesorderheader
+        description: General sales order information.
+        columns:
+          - name: salesorderid
+            description: Primary key of the orders table.
+            tests:
+              - not_null
+              
+      - name: salesorderdetail
+        description: Individual products associated with a specific sales order.
+
+      - name: product
+        description: Products sold or used in the manufacturing of sold products.
+
+      - name: salesterritory
+        description: Sales territory lookup table.
+
+      - name: countryregion
+        description: Lookup table containing the ISO standard codes for countries and regions.
+
+      - name: person_address
+        description: Street address information for customers, employees, and vendors.
+
+      - name: stateprovince
+        description: State and province lookup table.
+
+      - name: salesperson
+        description: Sales representative current information.
+
+      - name: employee
+        description: Employee information such as salary, department, and title.
+
+      - name: person
+        description: Human beings involved with AdventureWorks like employees, customer contacts, and vendor contacts.
+
+      - name: salesorderheadersalesreason
+        description: Cross-reference table mapping sales orders to sales reason codes.
+
+      - name: salesreason
+        description: Lookup table of customer purchase reasons.
+
+      - name: customer
+        description: Current customer information. Also see the Person and Store tables.
+      
+      - name: creditcard
+        description: Customer credit card information.
